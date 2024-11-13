@@ -105,7 +105,7 @@ Commande de la Vitesse
 
 Ajout de fonctionnalités dans le shell :
 
-**Commande start** : Fixe le rapport cyclique à 50 % (vitesse nulle) et active la génération des PWM.
-**Commande stop** : Désactive la génération des PWM.
-**Commande speed XXXX** : Définit le rapport cyclique à XXXX / PWM_MAX.
+- **Commande start** : Fixe le rapport cyclique à 50 % (vitesse nulle) et active la génération des PWM.
+- **Commande stop** : Désactive la génération des PWM.
+- **Commande speed XXXX** : Définit le rapport cyclique à XXXX / PWM_MAX.
 
