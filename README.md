@@ -31,13 +31,16 @@ Nous avons configuré notre projet dans STM32CubeMX pour générer les signaux P
 
 Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant à 170 MHz, nous avons calculé les valeurs de préscaler (PSC) et d'auto-reload (ARR) pour le Timer. Voici les étapes détaillées :
 
-1. **Calcul de ARR** : 
+1. **Calcul de ARR** :
    - Avec une fréquence de 20 kHz souhaitée, la période d'une PWM est de 50 µs (1 / 20 kHz).
-   - Comme notre STM32 fonctionne à 170 MHz, nous avons une période de 5,88 ns pour chaque cycle.
-   - Pour atteindre 50 µs, nous avons besoin de :  
-     \( \text{ARR initial} = \frac{50 \text{ µs}}{5,88 \text{ ns}} = 8500 \).
-   - Cependant, puisque la PWM possède une phase de montée et une phase de descente, nous devons diviser par 2 pour respecter cette montée et descente dans chaque période complète.  
-     \( \text{ARR final} = \frac{8500}{2} - 1 = 4249 \).
+   - Comme notre STM32 fonctionne à 170 MHz, chaque cycle a une période de 5,88 ns.
+   - Pour atteindre une période totale de 50 µs, nous avons besoin de calculer la valeur initiale de `ARR` :
+
+     ARR initial = 50 µs / 5,88 ns = 8500
+
+   - Cependant, puisque la PWM possède une phase de montée et une phase de descente, nous devons diviser cette valeur par 2 pour inclure la montée et la descente dans chaque période complète :
+
+     ARR final = (8500 / 2) - 1 = 4249
 
 2. **Configuration dans le Timer** :
    - **PSC** = 0
