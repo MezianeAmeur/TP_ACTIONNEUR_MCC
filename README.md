@@ -47,7 +47,7 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
    - **ARR** = 4249 (pour générer une fréquence de 20 kHz)
    - **Counter Mode** = Center Aligned Mode1
    
-   
+
 ![cap6](https://github.com/user-attachments/assets/9eb6e188-2ab6-41b1-832f-0ad3e92de98b)
 
 3. **Calcul du Temps Mort** : Nous avons configuré le temps mort à 200 ns dans l'IOC, en ajustant la valeur `Dead Time` à 34., ci-dessous le calcul effectué pour l'obtention de cette valeur:
@@ -65,7 +65,7 @@ Voici les signaux PWM observés à l'oscilloscope pour vérifier la configuratio
 
 ### Premiers Tests
 
-Nous avons testé plusieurs rapports cycliques : 10 %, 20 % et 70 %.
+Nous avons testé plusieurs rapports cycliques 
 
 #### Étapes dans le Code
 
@@ -77,7 +77,7 @@ Nous avons testé plusieurs rapports cycliques : 10 %, 20 % et 70 %.
    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
    HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
 
-## Définition des Rapports Cycliques dans la Boucle `while`
+2. **Définition des Rapports Cycliques dans la Boucle `while`**
 
  ```c
 __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 4249 * 0.60); // Rapport de 60%
