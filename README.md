@@ -45,10 +45,11 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
 2. **Configuration dans le Timer** :
    - **PSC** = 0
    - **ARR** = 4249 (pour générer une fréquence de 20 kHz)
+   - **Counter Mode** = Center Aligned Mode1
+![cap6](https://github.com/user-attachments/assets/9eb6e188-2ab6-41b1-832f-0ad3e92de98b)
 
-![Configuration Timer](https://github.com/user-attachments/assets/ad01a50a-845e-435b-af7f-31daa2f16450)
-
-3. **Calcul du Temps Mort** : Nous avons configuré le temps mort à 200 ns dans l'IOC, en ajustant la valeur `Dead Time` à 34.
+3. **Calcul du Temps Mort** : Nous avons configuré le temps mort à 200 ns dans l'IOC, en ajustant la valeur `Dead Time` à 34., ci-dessous le calcul effectué pour l'obtention de cette valeur:
+![cap4](https://github.com/user-attachments/assets/adbdb95c-55b6-49c8-a6b5-e4a953e5e690)
 
 ### Configuration du Rapport Cyclique
 
