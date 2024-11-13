@@ -46,6 +46,8 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
    - **PSC** = 0
    - **ARR** = 4249 (pour générer une fréquence de 20 kHz)
    - **Counter Mode** = Center Aligned Mode1
+   
+   
 ![cap6](https://github.com/user-attachments/assets/9eb6e188-2ab6-41b1-832f-0ad3e92de98b)
 
 3. **Calcul du Temps Mort** : Nous avons configuré le temps mort à 200 ns dans l'IOC, en ajustant la valeur `Dead Time` à 34., ci-dessous le calcul effectué pour l'obtention de cette valeur:
