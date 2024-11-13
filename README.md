@@ -1,5 +1,6 @@
 # TP_ACTIONNEUR_MCC
 Binome: 
+<<<<<<< HEAD
 AMEUR Meziane
 Chair Mohammed Rafik
 
@@ -13,3 +14,7 @@ Inclure le temps mort,
 Vérifier les signaux de commande à l'oscilloscope,
 Prendre en main le hacheur,
 Faire un premier essai de commande moteur.
+=======
+-AMEUR Meziane
+-Chair Mohammed Rafik
+>>>>>>> bde79b2030443b4d8cf408643f254bb2574953ca
