@@ -58,7 +58,9 @@ Pour obtenir une fréquence de 20 kHz tout en respectant la résolution et le ra
 
 ![cap6](https://github.com/user-attachments/assets/9eb6e188-2ab6-41b1-832f-0ad3e92de98b)
 
-3. **Calcul du Temps Mort** : Nous avons configuré un temps mort de 200 ns, dans l'IOC, nous avons ajusté la valeur `Dead Time` à 34., ci-dessous le calcul effectué pour l'obtention de cette valeur:
+3. **Calcul du Temps Mort** :
+ Selon la datasheet du transistor, le Rise Time et le Fall Time sont à 35 ns, soient des temps morts à 70 ns et pourour être large, nous avons choisi de prendre un temps morts à 200 ns.
+ Nous avons alors configuré la valeur `Dead Time` à 34., ci-dessous le calcul effectué pour l'obtention de cette valeur:
    
 ![cap4](https://github.com/user-attachments/assets/adbdb95c-55b6-49c8-a6b5-e4a953e5e690)
 
