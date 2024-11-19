@@ -51,16 +51,10 @@ Channel 2 -> PWM Generation CH2 CH2N
 Pour obtenir une fréquence de 20 kHz tout en respectant la résolution et le rapport cyclique, nous configurons les réglages suivants :
 
    - **PSC** = 0 => 170 000 000 Hz
-
-   - Pour obtenir les signaux PWM complémentaires en décalage, nous reconfigurons les réglages.
-
-Counteur Mode : Center Aligned, par conséquent
-l'ARR est divisé par deux : 4250-1
-CCR1 = 2550
-CCR2 = ARR-CCR1 = 4250-2550 = 1700
-
    - **ARR** = 4249 
    - **Counter Mode** = Center Aligned Mode1
+   - **CCR1** = 2550
+   - **CCR2** = ARR-CCR1 = 4250-2550 = 1700
    
 
 ![cap6](https://github.com/user-attachments/assets/9eb6e188-2ab6-41b1-832f-0ad3e92de98b)
@@ -77,6 +71,8 @@ Pour les essais initiaux, nous avons configuré le rapport cyclique à 60 % et g
 Voici les signaux PWM observés à l'oscilloscope pour vérifier la configuration :
 
 ![Oscilloscope Capture](https://github.com/user-attachments/assets/8cef079a-bdc2-4069-a637-fd02b125fcd9)
+
+La fréquence est bien de 20 kHz
 
 ### Premiers Tests
 
