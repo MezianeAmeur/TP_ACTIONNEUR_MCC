@@ -100,10 +100,12 @@ Rapport cyclique 10 %
 ![10](https://github.com/user-attachments/assets/3ee251eb-eb45-4123-a854-493eba675278)
 
 Rapport cyclique 30 %
+
 ![30](https://github.com/user-attachments/assets/b5796960-7ad3-448e-9a05-4057eb34dd51)
 
 
 Rapport cyclique 40 %
+
 ![40](https://github.com/user-attachments/assets/66847914-c9cf-47dc-805b-98ddc98421ca)
 
 
