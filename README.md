@@ -43,8 +43,23 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
      ARR final = (8500 / 2) - 1 = 4249
 
 2. **Configuration dans le Timer** :
-   - **PSC** = 0
-   - **ARR** = 4249 (pour générer une fréquence de 20 kHz)
+ Choix du timer 1 en mode :
+
+Channel 1 -> PWM Generation CH1 CH1N
+Channel 2 -> PWM Generation CH2 CH2N
+
+Pour obtenir une fréquence de 20 kHz tout en respectant la résolution et le rapport cyclique, nous configurons les réglages suivants :
+
+   - **PSC** = 0 => 170 000 000 Hz
+
+   - Pour obtenir les signaux PWM complémentaires en décalage, nous reconfigurons les réglages.
+
+Counteur Mode : Center Aligned, par conséquent
+l'ARR est divisé par deux : 4250-1
+CCR1 = 2550
+CCR2 = ARR-CCR1 = 4250-2550 = 1700
+
+   - **ARR** = 4249 
    - **Counter Mode** = Center Aligned Mode1
    
 
