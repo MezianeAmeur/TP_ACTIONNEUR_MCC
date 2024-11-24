@@ -1,9 +1,4 @@
-/*
- * shell.h
- *
- *  Created on: Oct 24, 2022
- *      Author: Adam CHEIKH BRAHIM and Karim Abdellaziz and Sami Asfary
- */
+
 
 #ifndef INC_SHELL_H_
 #define INC_SHELL_H_

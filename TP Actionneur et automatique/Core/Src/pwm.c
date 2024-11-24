@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file	pwm.c
-  * @authors	Adam Cheikh Brahim, Karim Abdellaziz and Sami Asfary
+  * @authors	CHAIR / AMEUR
   * @brief	Functions that control the motor
   ******************************************************************************
   **/

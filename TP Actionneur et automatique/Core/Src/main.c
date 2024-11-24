@@ -332,7 +332,6 @@ void Process_ADC_Data(uint16_t* data, uint16_t length)
     /* Calculer le courant en soustrayant l'offset */
     current_v = voltage - offset_current;
 
-    /* Vous pouvez ajouter du code ici pour utiliser current_v */
 }
 /* USER CODE END 4 */
 /**

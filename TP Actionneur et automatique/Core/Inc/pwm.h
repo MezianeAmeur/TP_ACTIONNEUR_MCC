@@ -1,9 +1,3 @@
-/*
- * pwm.h
- *
- *  Created on: Oct 24, 2022
- *      Author:
- */
 
 #ifndef INC_PWM_H_
 #define INC_PWM_H_
