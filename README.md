@@ -188,4 +188,4 @@ $$
 $$
 
 Où :
-- **V_ref** est la tension de référence (généralement 3.3V).
+- **V_ref** est la tension de référence= 3.3V.
