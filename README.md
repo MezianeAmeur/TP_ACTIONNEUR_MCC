@@ -159,7 +159,6 @@ else if(strcmp(argv[0],"speed")==0){
 		/*
 		 * start -> Activation des PWM avec un rapport cyclique de 50%
 		 * stop  -> Désactivation des PWM
-		 * adc   -> On affiche la mesure du courant
 		 */
 
 
