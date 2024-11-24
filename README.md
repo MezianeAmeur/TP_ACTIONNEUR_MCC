@@ -38,7 +38,22 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
 
      ARR initial = 50 µs / 5,88 ns = 8500
 
-   - Cependant, puisque la PWM possède une phase de montée et une phase de descente, nous devons diviser cette valeur par 2 pour inclure la montée et la descente dans chaque période complète :
+#  Comptage Up-Down
+
+Dans notre configuration initiale, nous avions défini le mode PWM en comptage **Up** uniquement, avec un registre d'auto-rechargement (ARR) fixé à 8499. Cependant, en passant au mode **Up-Down** (comptage en montée et descente), il est nécessaire d’adapter la configuration pour tenir compte du cycle double du compteur.
+
+En mode Up-Down :  
+- Le compteur monte jusqu’à ARR, puis redescend à 0.  
+- Pour conserver la même fréquence PWM qu’en mode Up, **ARR est divisé par 2** afin que la période totale (montée + descente) reste identique.
+- 
+Le graphe ci-dessous illustre le fonctionnement du mode PWM, montrant comment la valeur de CCR1 détermine le rapport cyclique (duty cycle) en fonction de son intersection avec le compteur.
+
+    ![cap1](https://github.com/user-attachments/assets/f4697c15-6cca-40f4-a3f5-81fb171bebe2)
+  
+Dans ce contexte :  
+- **ARR** définit la plage maximale du compteur.  
+- **CCR1** fixe le moment où le signal passe de haut à bas (ou inversement), contrôlant ainsi la largeur de l’impulsion.  
+- Le passage au mode Up-Down modifie la dynamique du comptage, mais le principe de génération de PWM reste inchangé.
 
      ARR final = (8500 / 2) - 1 = **4249**
 
@@ -97,6 +112,7 @@ __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 4249 * 0.60); // Rapport de 60%
 __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 4249 * 0.40); // Complémentaire
 ```
 Observations à l'Oscilloscope pour Différents Rapports Cycliques
+
 Rapport cyclique 10 %
 
 ![10](https://github.com/user-attachments/assets/3ee251eb-eb45-4123-a854-493eba675278)
