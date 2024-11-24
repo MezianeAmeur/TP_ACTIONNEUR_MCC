@@ -189,3 +189,71 @@ $$
 
 Où :
 - **V_ref** est la tension de référence= 3.3V.
+
+  ## Étapes du calcul du courant
+
+### 1. Calcul du courant par Polling
+
+#### 1.1. Configuration de l'ADC
+Avant de commencer, vous devez configurer l'ADC pour lire la tension aux bornes de la résistance de shunt.
+
+1. **Initialiser l'ADC** :
+   - Configurer le mode d'échantillonnage (par exemple, 12 bits).
+   - Choisir la source de la tension de référence (généralement 3.3V).
+
+2. **Lancer la conversion** :
+   - Utiliser la fonction de démarrage de conversion (`HAL_ADC_Start()`).
+
+3. **Attendre la fin de la conversion** :
+   - Attendre que la conversion soit terminée avec `HAL_ADC_PollForConversion()`.
+
+4. **Lire la valeur ADC** :
+   - Après la fin de la conversion, récupérer la valeur de l'ADC avec `HAL_ADC_GetValue()`.
+
+#### 1.2. Calcul de la tension
+
+La formule pour calculer la tension aux bornes de la résistance de shunt est la suivante :
+
+$$
+V_{\text{shunt}} = \left( \frac{\text{Valeur ADC}}{4095} \right) \times V_{\text{ref}}
+$$
+
+#### 1.3. Calcul du courant
+
+Une fois la tension obtenue, vous pouvez calculer le courant à partir de la loi d'Ohm :
+
+$$
+I = \frac{V_{\text{shunt}}}{R_{\text{shunt}}}
+$$
+
+Où :
+- **V_shunt** est la tension mesurée aux bornes de la résistance de shunt.
+- **R_shunt** est la valeur de la résistance de shunt.
+
+### 2. Calcul du courant par DMA
+
+#### 2.1. Configuration de l'ADC en mode DMA
+Le mode DMA permet de lire plusieurs valeurs de l'ADC sans bloquer le processeur, ce qui est particulièrement utile pour des échantillons rapides ou des acquisitions continues.
+
+1. **Configurer l'ADC pour le mode DMA** :
+   - Dans STM32CubeMX, configurer l'ADC pour utiliser le DMA. Choisir un canal DMA et une taille de buffer adaptée.
+   
+2. **Démarrer la conversion et activer le DMA** :
+   - Utiliser `HAL_ADC_Start_DMA()` pour démarrer la conversion et activer le DMA. Cette fonction permet de transférer les données directement dans un tableau de mémoire.
+
+#### 2.2. Récupération des données par DMA
+
+Lorsque l'ADC a terminé la conversion et que le DMA a transféré les valeurs, vous pouvez accéder aux résultats via le tableau de mémoire spécifié.
+
+#### 2.3. Calcul de la tension et du courant
+
+Une fois les données récupérées, le calcul de la tension et du courant se fait de la même manière qu'en mode polling :
+
+1. **Calcul de la tension** pour chaque échantillon avec la même formule qu'en mode polling.
+   
+2. **Calcul du courant** à partir de la tension mesurée et de la résistance de shunt.
+
+### Conclusion
+
+L'utilisation du polling est simple, mais le DMA permet de gérer plusieurs conversions sans bloquer le processeur, ce qui est essentiel pour des applications nécessitant des mesures continues ou à haute fréquence.
+
