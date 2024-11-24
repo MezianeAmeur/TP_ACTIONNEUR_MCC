@@ -138,3 +138,50 @@ Ajout de fonctionnalités dans le shell :
 - **Commande stop** : Désactive la génération des PWM.
 - **Commande speed XXXX** : Définit le rapport cyclique à XXXX / PWM_MAX.
 
+On les ajoute au shell.c, où on a codé la commande speed comme suit : 
+ ```c
+else if(strcmp(argv[0],"speed")==0){
+			float speedVal=atoi(argv[1]);
+			if (speedVal> PWM_MAX){
+				speedVal=PWM_MAX;
+			}
+			if (speedVal< PWM_MIN){
+				speedVal=PWM_MIN;
+			}
+
+			speedVal=(DUTY_MAX*speedVal)/100; //PWM en pourcentage
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,speedVal);
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,DUTY_MAX - speedVal);
+
+
+
+		}
+		/*
+		 * start -> Activation des PWM avec un rapport cyclique de 50%
+		 * stop  -> Désactivation des PWM
+		 * adc   -> On affiche la mesure du courant
+		 */
+
+
+		else if(strcmp(argv[0],"start")==0){
+
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,0.5*DUTY_MAX);
+			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,0.5*DUTY_MAX);
+			HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+			HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+			HAL_TIMEx_PWMN_Start(&htim1, TIM_CHANNEL_2);
+			//HAL_TIM_Encoder_Start(&htim4, TIM_CHANNEL_ALL);
+			//HAL_TIM_Base_Start_IT(&htim5);
+
+		}
+		else if(strcmp(argv[0],"stop")==0){
+			HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
+			HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_1);
+			HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
+			HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
+		}
+
+```
+
+
