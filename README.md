@@ -180,3 +180,12 @@ else if(strcmp(argv[0],"speed")==0){
 **Mesure de vitesse et de courant**
 
 Dans cette partie, nous avons utilisé la broche de l'ADC1 de la STM32 comme entrée du retour courant du hacheur.
+
+Le résultat de l'ADC sur 12 bits varie entre 0 et 4095. Une formule classique pour convertir la tension est :
+
+$$
+\text{Tension (V)} = \left( \frac{\text{Valeur ADC}}{4095} \right) \times V_{\text{ref}}
+$$
+
+Où :
+- **V_ref** est la tension de référence (généralement 3.3V).
