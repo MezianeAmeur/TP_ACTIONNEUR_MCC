@@ -152,16 +152,11 @@ else if(strcmp(argv[0],"speed")==0){
 			speedVal=(DUTY_MAX*speedVal)/100; //PWM en pourcentage
 			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,speedVal);
 			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,DUTY_MAX - speedVal);
-
-
-
 		}
 		/*
 		 * start -> Activation des PWM avec un rapport cyclique de 50%
 		 * stop  -> Désactivation des PWM
 		 */
-
-
 		else if(strcmp(argv[0],"start")==0){
 
 			__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,0.5*DUTY_MAX);
@@ -180,7 +175,4 @@ else if(strcmp(argv[0],"speed")==0){
 			HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_2);
 			HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
 		}
-
 ```
-
-
