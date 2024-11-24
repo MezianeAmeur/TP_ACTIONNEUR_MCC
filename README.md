@@ -38,18 +38,16 @@ Pour obtenir une PWM de fréquence 20 kHz à partir de notre STM32 fonctionnant 
 
      ARR initial = 50 µs / 5,88 ns = 8500
 
-#  Comptage Up-Down
+ **Comptage Up-Down**
 
 Dans notre configuration initiale, nous avions défini le mode PWM en comptage **Up** uniquement, avec un registre d'auto-rechargement (ARR) fixé à 8499. Cependant, en passant au mode **Up-Down** (comptage en montée et descente), il est nécessaire d’adapter la configuration pour tenir compte du cycle double du compteur.
 
 En mode Up-Down :  
 - Le compteur monte jusqu’à ARR, puis redescend à 0.  
 - Pour conserver la même fréquence PWM qu’en mode Up, **ARR est divisé par 2** afin que la période totale (montée + descente) reste identique.
-- 
 Le graphe ci-dessous illustre le fonctionnement du mode PWM, montrant comment la valeur de CCR1 détermine le rapport cyclique (duty cycle) en fonction de son intersection avec le compteur.
 
-    ![cap1](https://github.com/user-attachments/assets/f4697c15-6cca-40f4-a3f5-81fb171bebe2)
-  
+  ![cap1](https://github.com/user-attachments/assets/55f2fe8d-e6ce-4ebf-a56c-d87249612708)
 Dans ce contexte :  
 - **ARR** définit la plage maximale du compteur.  
 - **CCR1** fixe le moment où le signal passe de haut à bas (ou inversement), contrôlant ainsi la largeur de l’impulsion.  
