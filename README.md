@@ -176,3 +176,7 @@ else if(strcmp(argv[0],"speed")==0){
 			HAL_TIMEx_PWMN_Stop(&htim1, TIM_CHANNEL_2);
 		}
 ```
+
+**Mesure de vitesse et de courant**
+
+Dans cette partie, nous avons utilisé la broche de l'ADC1 de la STM32 comme entrée du retour courant du hacheur.
